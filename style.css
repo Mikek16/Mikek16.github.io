@@ -1,11 +1,14 @@
 
 body {
-    background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
-    background-size: contain;
-    background-position: top;
-    background-repeat: no-repeat;
+
+  
     color: #222624;
     font-family: monospace;
    
 }
-
+.image{
+    background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
