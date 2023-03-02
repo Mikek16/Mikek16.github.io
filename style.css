@@ -1,9 +1,8 @@
 head {
-    background-image: url('https://Mikek16.github.io/panoramic.jpg');
+    background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
 }
 body {
     color: #222623;
-    background-color: #458a58;
     font-family: monospace;
    
 }
