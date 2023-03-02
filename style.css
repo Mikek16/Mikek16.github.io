@@ -1,6 +1,8 @@
 
 body {
     background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
+    background-size: contain;
+    
     color: #222624;
     font-family: monospace;
    
