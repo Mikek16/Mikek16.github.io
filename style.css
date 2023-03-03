@@ -4,10 +4,10 @@ body {
     color: #222624;
     font-family: monospace;
     background: #458a58 url('https://Mikek16.github.io/panoramic.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: top;
     background-repeat: no-repeat;
 }
 .centering{
-    padding-top: 60%;
+    padding-top: 30%;
 }
