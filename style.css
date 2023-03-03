@@ -4,7 +4,7 @@ body {
     background-color: #458a58;
     color: #222624;
     font-family: monospace;
-    background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
+    background: rgba(255,255,255,0.5) url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
