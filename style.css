@@ -3,7 +3,7 @@ body{
 
     color: #222624;
     font-family: monospace;
-    background: #356b45 url('https://Mikek16.github.io/mountains.jpg');
+    background: #2f3631 url('https://Mikek16.github.io/mountains.jpg');
     background-size: contain;
     background-position: top;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@ body{
     padding-top: 40%;
 }
 a{
-    color: lightskyblue;
+    color: beige;
     text-decoration: none;
     
 }
