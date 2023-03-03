@@ -28,28 +28,13 @@ button {
     bottom: 15px;
     right: 15px;
 }
-.curve {
-    position: absolute;
-    height: 225px;
+.spacer{
+    aspect-ratio: 900/600;
     width: 100%;
-    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.curve::before{
-    content:'';
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 55%;
-    height: 100%;
-    background-color: aqua;
-}
-.curve::after{
-    content:'';
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 55%;
-    height: 100%;
-    background-color: blue;
-    z-index: -1;;
+.layer{
+    background-image: url('https: //Mikek 16github .io/layered-waves-haikei.svg');
 }
