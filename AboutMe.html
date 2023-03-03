@@ -31,10 +31,12 @@
             methods: {
                 changeThemeDark: function(){
                     console.log("dark clicked");
-                    document.getElementById("body").classList.toggle("dark");
+                    document.body.style.backgroundColor = '';
+                    
                 },
                 changeThemeLight: function(){
-                    document.getElementById("body").classList.toggle("light");
+                    console.log("light clicked");
+                    document.body.style.backgroundColor = '';
                 }
             },
         });

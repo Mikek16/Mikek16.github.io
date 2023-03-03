@@ -17,27 +17,12 @@ a{
     text-decoration: none;
     
 }
-.buttonlight {
-    background-color: #6bd88a;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-.buttondark {
-    background-color: #356b45;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    bottom: 11%;
-    right: 11%;
-}
+
 button {
-    background-color: #6bd88a;
+    background-color: transparent;
     width: 15px;
     height: 15px;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
+    border:#6bd88a ;
+    bottom: 15px;
+    right: 15px;
 }
