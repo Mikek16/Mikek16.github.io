@@ -4,13 +4,8 @@ body {
     background-color: #458a58;
     color: #222624;
     font-family: monospace;
-   
-}
-image{
-    max-width: 300px;
     background: url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-
 }
