@@ -8,12 +8,6 @@ body{
     background-position: top;
     background-repeat: no-repeat;
 }
-body.dark{
-    background-color: #356b45;
-}
-body.light{
-    background-color: #6bd88a;
-}
 
 .centering{
     padding-top: 40%;
@@ -23,11 +17,19 @@ a{
     text-decoration: none;
     
 }
-#button-container {
-    
+.buttonlight {
+    background-color: #6bd88a;
     width: 15px;
     height: 15px;
     position: absolute;
     bottom: 10%;
     right: 10%;
+}
+.buttondark {
+    background-color: #356b45;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 11%;
+    right: 11%;
 }
