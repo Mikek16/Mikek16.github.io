@@ -3,7 +3,7 @@ body {
 
     color: #222624;
     font-family: monospace;
-    background: rgba(255,255,255,0.5) url('https://Mikek16.github.io/panoramic.jpg'), #458a58;
+    background: #458a58 url('https://Mikek16.github.io/panoramic.jpg');
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
