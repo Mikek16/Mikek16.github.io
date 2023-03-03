@@ -1,13 +1,20 @@
 
-body {
+body{
 
     color: #222624;
     font-family: monospace;
-    background: #458a58 url('https://Mikek16.github.io/mountains.jpg');
+    background: #2f5e3c url('https://Mikek16.github.io/mountains.jpg');
     background-size: contain;
     background-position: top;
     background-repeat: no-repeat;
 }
+body.dark{
+    background-color: #2f5e3c;
+}
+body.light{
+    background-color: #6bd88a;
+}
+
 .centering{
     padding-top: 40%;
 }

@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   
     <div class="image"></div>
-    <body>
+    <body id= "body" class="dark">
         <div class="centering" align="center">
       <h1>Michael Krause</h1>  
       <br>
@@ -17,4 +17,21 @@
         <a href="https://mikek16.github.io/index.html">Go Back</a>
     </div>
     </body>
+    <button class="btn btn-primary" v-on:click='changeThemeDark'>Dark</button>
+    <button class="btn btn-primary" v-on:click='changeThemeLight'>Light</button>
+
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var aboutVue = new Vue({
+            methods: {
+                changeThemeDark: function(){
+                    document.getElementById("body").classList.toggle("dark");
+                },
+                changeThemeLight: function(){
+                    document.getElementById("body").classList.toggle("light");
+                }
+            },
+        });
+
+    </script>
 </html>
