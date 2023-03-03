@@ -19,6 +19,8 @@ a{
 }
 
 button {
+    display: flex;
+    flex-direction: row;
     background-color: transparent;
     width: 15px;
     height: 15px;
