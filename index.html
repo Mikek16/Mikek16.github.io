@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+    <div id="indexVue">
     <link rel="stylesheet" type="text/css" href="style.css">
     <div class="image"></div>
     <body>
@@ -17,4 +17,26 @@
     </div>
      </div>
     </body>
+    </div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var indexVue = new Vue({
+            el: "#indexVue",
+            methods: {
+                changeThemeDark: function(){
+                    console.log("dark clicked");
+                    document.body.style.backgroundColor = '#2f3631';
+                    document.body.style.color = '#ccf0d6';
+                    
+                },
+                changeThemeLight: function(){
+                    console.log("light clicked");
+                    document.body.style.backgroundColor = '#6bd88a';
+                    document.body.style.color = '#222624';
+                }
+            },
+        });
+        Vue.config.devtools = true;
+    </script>
+    
 </html>
