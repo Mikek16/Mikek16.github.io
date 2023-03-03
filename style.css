@@ -1,6 +1,9 @@
 
 body{
-
+    background: #a1ceae url('https://Mikek16.github.io/mountains.jpg');
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
     color: #222624;
     font-family: monospace;
    
@@ -34,10 +37,4 @@ button {
 }
 .layer{
     background-image: url('https: //Mikek 16github .io/layered-waves-haikei.svg');
-}
-.img{
-    background: #a1ceae url('https://Mikek16.github.io/mountains.jpg');
-    background-size: contain;
-    background-position: top;
-    background-repeat: no-repeat;
 }
