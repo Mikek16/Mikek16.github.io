@@ -24,6 +24,8 @@ a{
     
 }
 #button-container {
+    width: 10px;
+    height: 10px;
     position: absolute;
     bottom: 10px;
     right: 10px;
