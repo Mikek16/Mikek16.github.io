@@ -1,49 +1,94 @@
 <!DOCTYPE html>
-<html>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  
-    <div id="aboutVue">
-    <body id= "body" class="dark">
-        
-        <div class="centering" align="center">
-      <h1>Michael Krause</h1>  
-      <br>
-        <p>
-            Dickinson College '24<br>
-            Computer Science
-            <hr width = 15% color="#424a44">
-            <a href="mailto:MichaelGKrause@outlook.com">MichaelGKrause@outlook.com</a><hr  width = 15% color="#424a45">
-        </p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Krause's Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            color: #acdab6;
+            background: #1b1b1f; 
+          }
 
-        <a href="https://mikek16.github.io/index.html">Go Back</a>
+          section{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 200;
+            padding: 300px 20vw;
+          }
+          .green{
+            background: #287b19;
+          }
+          .blue{
+            background: #27496D;
+          }
+          .light{
+            background: #A4B494;
+          }
+
+          .spacer {
+            aspect-ratio: 900/250;
+            width:100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          }
+
+          .custom-shape-divider-top-1677889977 {
+             position: absolute;
+             top: 0;
+             left: 0;
+
+             overflow-x: hidden;
+             line-height: 0;
+            }
+            a{
+                text-decoration: none;
+                color:#6da078 ;
+            }
+            svg{
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
     
-    </body>
-    <div id="button-container">
-        <button class="btn btn-primary" v-on:click='changeThemeDark'><img src = "https://mikek16.github.io/moon.ico"></button>
-        <button class="btn btn-primary" v-on:click='changeThemeLight'><img src = "https://mikek16.github.io/sun.ico"></button>
-    
-    </div>
-    </div>
-    </div>
-    
-    <script src="https://unpkg.com/vue@2"></script>
-    <script>
-        var aboutVue = new Vue({
-            el: "#aboutVue",
-            methods: {
-                changeThemeDark: function(){
-                    console.log("dark clicked");
-                    document.body.style.backgroundColor = '#2f3631';
-                    document.body.style.color = '#ccf0d6';
-                    
-                },
-                changeThemeLight: function(){
-                    console.log("light clicked");
-                    document.body.style.backgroundColor = '#a1ceae';
-                    document.body.style.color = '#222624';
-                }
-            },
-        });
-        Vue.config.devtools = true;
-    </script>
+    <section class="green">
+        <h1>Michael Krause</h1>
+
+
+      
+    </section>
+    <section class="light">
+        <div class="custom-shape-divider-top-1677889977">
+            <svg id="visual" viewBox=" 0 1920 250" width="1920" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 127L45.7 139.3C91.3 151.7 182.7 176.3 274.2 182C365.7 187.7 457.3 174.3 548.8 170.2C640.3 166 731.7 171 823 172.5C914.3 174 1005.7 172 1097 176.2C1188.3 180.3 1279.7 190.7 1371.2 188.7C1462.7 186.7 1554.3 172.3 1645.8 171.8C1737.3 171.3 1828.7 184.7 1874.3 191.3L1920 198L1920 0L1874.3 0C1828.7 0 1737.3 0 1645.8 0C1554.3 0 1462.7 0 1371.2 0C1279.7 0 1188.3 0 1097 0C1005.7 0 914.3 0 823 0C731.7 0 640.3 0 548.8 0C457.3 0 365.7 0 274.2 0C182.7 0 91.3 0 45.7 0L0 0Z" fill="#a4b494"></path><path d="M0 104L45.7 111.3C91.3 118.7 182.7 133.3 274.2 136C365.7 138.7 457.3 129.3 548.8 133.2C640.3 137 731.7 154 823 152C914.3 150 1005.7 129 1097 125.5C1188.3 122 1279.7 136 1371.2 137C1462.7 138 1554.3 126 1645.8 117.7C1737.3 109.3 1828.7 104.7 1874.3 102.3L1920 100L1920 0L1874.3 0C1828.7 0 1737.3 0 1645.8 0C1554.3 0 1462.7 0 1371.2 0C1279.7 0 1188.3 0 1097 0C1005.7 0 914.3 0 823 0C731.7 0 640.3 0 548.8 0C457.3 0 365.7 0 274.2 0C182.7 0 91.3 0 45.7 0L0 0Z" fill="#8aa574"></path><path d="M0 108L45.7 110.8C91.3 113.7 182.7 119.3 274.2 121C365.7 122.7 457.3 120.3 548.8 119.2C640.3 118 731.7 118 823 116.7C914.3 115.3 1005.7 112.7 1097 105.8C1188.3 99 1279.7 88 1371.2 82.5C1462.7 77 1554.3 77 1645.8 78.5C1737.3 80 1828.7 83 1874.3 84.5L1920 86L1920 0L1874.3 0C1828.7 0 1737.3 0 1645.8 0C1554.3 0 1462.7 0 1371.2 0C1279.7 0 1188.3 0 1097 0C1005.7 0 914.3 0 823 0C731.7 0 640.3 0 548.8 0C457.3 0 365.7 0 274.2 0C182.7 0 91.3 0 45.7 0L0 0Z" fill="#6e9756"></path><path d="M0 74L45.7 71C91.3 68 182.7 62 274.2 60.3C365.7 58.7 457.3 61.3 548.8 61.7C640.3 62 731.7 60 823 58.5C914.3 57 1005.7 56 1097 60.3C1188.3 64.7 1279.7 74.3 1371.2 77.3C1462.7 80.3 1554.3 76.7 1645.8 78C1737.3 79.3 1828.7 85.7 1874.3 88.8L1920 92L1920 0L1874.3 0C1828.7 0 1737.3 0 1645.8 0C1554.3 0 1462.7 0 1371.2 0C1279.7 0 1188.3 0 1097 0C1005.7 0 914.3 0 823 0C731.7 0 640.3 0 548.8 0C457.3 0 365.7 0 274.2 0C182.7 0 91.3 0 45.7 0L0 0Z" fill="#4f8939"></path><path d="M0 39L45.7 37.8C91.3 36.7 182.7 34.3 274.2 37C365.7 39.7 457.3 47.3 548.8 45.8C640.3 44.3 731.7 33.7 823 34.2C914.3 34.7 1005.7 46.3 1097 52.7C1188.3 59 1279.7 60 1371.2 59.2C1462.7 58.3 1554.3 55.7 1645.8 55.3C1737.3 55 1828.7 57 1874.3 58L1920 59L1920 0L1874.3 0C1828.7 0 1737.3 0 1645.8 0C1554.3 0 1462.7 0 1371.2 0C1279.7 0 1188.3 0 1097 0C1005.7 0 914.3 0 823 0C731.7 0 640.3 0 548.8 0C457.3 0 365.7 0 274.2 0C182.7 0 91.3 0 45.7 0L0 0Z" fill="#287b19"></path></svg>
+        </div>
+
+        <h1>Projects</h1>
+        <p>
+            <a href="https://mikek16.github.io/MarioKartRandom.html">Mario Kart Wii Random Generator</a><br>
+            
+        </p>
+    </section>
+    <section class="blue">
+        <div class="custom-shape-divider-top-1677889977">
+            <svg id="visual" viewBox="0 1920 250" width="1920" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 219L64 219.8C128 220.7 256 222.3 384 223.7C512 225 640 226 768 222.2C896 218.3 1024 209.7 1152 204C1280 198.3 1408 195.7 1536 199.3C1664 203 1792 213 1856 218L1920 223L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z" fill="#27496d"></path><path d="M0 150L64 152.8C128 155.7 256 161.3 384 160.8C512 160.3 640 153.7 768 151.7C896 149.7 1024 152.3 1152 153.8C1280 155.3 1408 155.7 1536 155.8C1664 156 1792 156 1856 156L1920 156L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z" fill="#22677d"></path><path d="M0 108L64 113.5C128 119 256 130 384 134.8C512 139.7 640 138.3 768 138.3C896 138.3 1024 139.7 1152 136.8C1280 134 1408 127 1536 126.5C1664 126 1792 132 1856 135L1920 138L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z" fill="#428384"></path><path d="M0 102L64 101C128 100 256 98 384 95.7C512 93.3 640 90.7 768 86.5C896 82.3 1024 76.7 1152 73.3C1280 70 1408 69 1536 70.5C1664 72 1792 76 1856 78L1920 80L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z" fill="#719d89"></path><path d="M0 43L64 40.3C128 37.7 256 32.3 384 31C512 29.7 640 32.3 768 32.8C896 33.3 1024 31.7 1152 31C1280 30.3 1408 30.7 1536 31.3C1664 32 1792 33 1856 33.5L1920 34L1920 0L1856 0C1792 0 1664 0 1536 0C1408 0 1280 0 1152 0C1024 0 896 0 768 0C640 0 512 0 384 0C256 0 128 0 64 0L0 0Z" fill="#a4b494"></path></svg>
+         </div>
+        <h1>About Me</h1>
+        <p>
+            Dickinson college '24<br>
+            Computer Science
+        </p>
+        <a href="mailto:MichaelGKrause@outlook.com">MichaelGKrause@outlook.com</a>
+
+    </section>
+</body>
 </html>

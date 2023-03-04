@@ -1,37 +1,43 @@
 
-body{
-    background: #a1ceae url('https://Mikek16.github.io/mountains.jpg');
-    background-size: contain;
-    background-position: top;
-    background-repeat: no-repeat;
-    color: #222624;
-    font-family: monospace;
-   
-}
 
-a{
-    color: beige;
-    text-decoration: none;
-    
-}
 
-button {
+section {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    background-color: transparent;
-    width: 15px;
-    height: 15px;
-    border: transparent;
-    bottom: 15px;
-    right: 15px;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px;
+    padding-top: 100px;
+    background: #3c31dd;
 }
-.spacer{
-    aspect-ratio: 900/600;
+
+.curve {
+    position: absolute;
+    height: 250px;
     width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    bottom: 0;
+    text-align: center;
 }
-.layer{
-    background-image: url('https: //Mikek 16github .io/layered-waves-haikei.svg');
+
+.curve::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 55%;
+    height: 100%;
+    transform: translate(85%, 60%);
+    background-color: hsl(216, 21%, 16%);
+}
+
+.curve::after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 55%;
+    height: 100%;
+    background-color: #3c31dd;
+    transform: translate(-4%, 40%);
+    z-index: -1;
 }
