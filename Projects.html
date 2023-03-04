@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <div id="projectVue">
+    <div class="image"></div>
+    <body>
+        <div class="centering" align="center">
+      <h1>Projects</h1>  
+      <br>
+        <p>
+            <a href="https://mikek16.github.io/MarioKartRandom.html">Mario Kart Wii Random Generator</a><br>
+            <hr width = 15% color="#424a44">
+            <a href="mailto:MichaelGKrause@outlook.com">MichaelGKrause@outlook.com</a><hr  width = 15% color="#424a45">
+        </p>
+
+     
+        <a href="https://mikek16.github.io/index.html">Go Back</a>
+        <div id="button-container">
+            <button class="btn btn-primary" v-on:click='changeThemeDark'><img src = "https://mikek16.github.io/moon.ico"></button>
+            <button class="btn btn-primary" v-on:click='changeThemeLight'><img src = "https://mikek16.github.io/sun.ico"></button>
+        
+        </div>
+    </div>
+    </body>
+</div>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script>
+        var projectVue = new Vue({
+            el: "#projectVue",
+            methods: {
+                changeThemeDark: function(){
+                    console.log("dark clicked");
+                    document.body.style.backgroundColor = '#2f3631';
+                    document.body.style.color = '#ccf0d6';
+                    
+                },
+                changeThemeLight: function(){
+                    console.log("light clicked");
+                    document.body.style.backgroundColor = '#a1ceae';
+                    document.body.style.color = '#222624';
+                }
+            },
+        });
+        Vue.config.devtools = true;
+    </script>
+</html>
