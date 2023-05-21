@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-   
+
+<head>
+
     <title>Mario Kart Random</title>
     <br>
-	<div id="MKG">
+    <div id="MKG">
 
-        <select id="size" name="size" v-model="selectedSize"/>
+        <select id="size" name="size" v-model="selectedSize" />
         <option v-for="size in sizes">{{size}}</option>
+        </select>
+
+        <select id="performance" name="performance" v-model="selectedPerformance" />
+        <option v-for="performance in performances">{{performance}}</option>
         </select>
 
 
 
+        <button class="btn btn-primary" v-on:click='generateRandom'>Generate Random</button>
+        <br>
+        <label id="output">
+            {{output}}
+        </label>
+        <br>
+        <button class="btn btn-primary" v-on:click='clearList'>Clear List</button>
+        <br>
 
-	<button class="btn btn-primary" v-on:click='generateRandom'>Generate Random</button>
-	<br>
-	<label id="output">
-	{{output}}
-	</label>
-	<br>
-    <button class="btn btn-primary" v-on:click='clearList'>Clear List</button>
-    <br> 
-	<ul id="list">
-		<li v-for="item in list"> {{ item }}</li>
-	</ul>
-	
-	
-	
-	</div>
-    <hr align="left" width = 15% color="#424a45">
-	<a href="https://mikek16.github.io/index.html">Go Back</a>
-    <hr align="left" width = 15% color="#424a45">
+        <ul id="list">
+            <li v-for="item in list"> {{ item }}</li>
+        </ul>
+
+
+
+    </div>
+    <hr align="left" width=15% color="#424a45">
+    <a href="https://mikek16.github.io/index.html">Go Back</a>
+    <hr align="left" width=15% color="#424a45">
     <script src="https://unpkg.com/vue@2"></script>
     <script>
         var MKG = new Vue({
@@ -38,49 +43,227 @@
             data: {
                 output: '',
                 list: [
-                
+
                 ],
-                selectedSize:'Any',
+                selectedSize: 'Any',
                 sizes: ["Small", "Medium", "Large", "Any"],
+                performances: ["Good", "Bad", "All"],
+                selectedPerformance: 'All',
             },
             methods: {
-            generateRandom: function (){
-              	CHARACTERS = [
- 			["Baby Mario", "Baby Luigi", "Baby Peach", "Baby Daisy", "	Toad", 		"Toadette", 		"Koopa Troopa", "Dry Bones","Small Mii"]
-,["Mario", "Luigi", "Peach", "Daisy", "Yoshi", "Birdo", "Diddy Kong", "Bowser Jr","Medium Mii"]
-,["Wario", "Waluigi", "Donkey Kong", "Bowser", "King Boo", "Rosalina", "Funky Kong", "Dry Bowser","Large Mii"]
-]
-VEHICLES = [
-["Standard Kart S", "Standard Bike S", "Booster Seat", "Bullet Bike", "Mini Beast", "Bit Bike", "Cheep Charger", "Quacker", "Tiny Titan", "Magikruiser", "Blue Falcon", "Jet Bubble"]
- ,["Standard Kart M", "Standard Bike M", "Classic Dragster", "Mach Bike", "Wild Wing", "Sugarscoot", "Super Blooper", "Zip Zip", "Daytripper", "Sneakster", "Sprinter", "Dolphin Dasher"]
-,["Standard Kart L", "Standard Bike L", "Offroader", "Flame Runner", "Flame Flyer", "Wario Bike", "Piranha Prowler", "Shooting Star" , "Jetsetter", "Spear", "Honey Coupe", "Phantom"]
-]	
-            
-			
-			var character = Math.floor(Math.random() * 9);
-			var vehicle = Math.floor(Math.random() * 12);
-            if(this.selectedSize == 'Small'){
-                size = 0;
-            } else if(this.selectedSize == 'Medium'){
-                size = 1;
-            } else if(this.selectedSize == 'Large'){
-                size = 2;
-            } else if (this.selectedSize == 'Any'){
-                var size = Math.floor(Math.random() * 3);
-            } else {
-                
-            }
-            this.list.push(CHARACTERS[size][character] +  " in the " + VEHICLES[size][vehicle]);
-              
-              
-              },
-              clearList: function(){
+                generateRandom: function () {
+                    const CHARACTERS = [
+                        [{ name: "Baby Mario", performance: true, size: "Small" },
+                        { name: "Baby Luigi", performance: true, size: "Small" },
+                        { name: "Baby Peach", performance: true, size: "Small" },
+                        { name: "Baby Daisy", performance: true, size: "Small" },
+                        { name: "Toad", performance: true, size: "Small" },
+                        { name: "Toadette", performance: true, size: "Small" },
+                        { name: "Koopa Troopa", performance: true, size: "Small" },
+                        { name: "Dry Bones", performance: true, size: "Small" },
+                        { name: "Small Mii", performance: true, size: "Small" }],
+                        [{ name: "Mario", performance: false, size: "Medium" },
+                        { name: "Luigi", performance: false, size: "Medium" },
+                        { name: "Peach", performance: true, size: "Medium" },
+                        { name: "Daisy", performance: true, size: "Medium" },
+                        { name: "Yoshi", performance: false, size: "Medium" },
+                        { name: "Birdo", performance: false, size: "Medium" },
+                        { name: "Diddy Kong", performance: true, size: "Medium" },
+                        { name: "Bowser Jr", performance: false, size: "Medium" },
+                        { name: "Medium Mii", performance: true, size: "Medium" }],
+                        [{ name: "Wario", performance: true, size: "Large" },
+                        { name: "Waluigi", performance: true, size: "Large" },
+                        { name: "Donkey Kong", performance: true, size: "Large" },
+                        { name: "Bowser", performance: true, size: "Large" },
+                        { name: "King Boo", performance: false, size: "Large" },
+                        { name: "Rosalina", performance: false, size: "Large" },
+                        { name: "Funky Kong", performance: true, size: "Large" },
+                        { name: "Dry Bowser", performance: false, size: "Large" },
+                        { name: "Large Mii", performance: true, size: "Large" }]
+                    ];
+
+                    const VEHICLES = [
+                        [{ name: "Standard Kart S", performance: true, size: "Small" },
+                        { name: "Standard Bike S", performance: false, size: "Small" },
+                        { name: "Booster Seat", performance: true, size: "Small" },
+                        { name: "Bullet Bike", performance: true, size: "Small" },
+                        { name: "Mini Beast", performance: true, size: "Small" },
+                        { name: "Bit Bike", performance: false, size: "Small" },
+                        { name: "Cheep Charger", performance: true, size: "Small" },
+                        { name: "Quacker", performance: true, size: "Small" },
+                        { name: "Tiny Titan", performance: false, size: "Small" },
+                        { name: "Magikruiser", performance: true, size: "Small" },
+                        { name: "Blue Falcon", performance: false, size: "Small" },
+                        { name: "Jet Bubble", performance: true, size: "Small" }],
+                        [{ name: "Standard Kart M", performance: false, size: "Medium" },
+                        { name: "Standard Bike M", performance: false, size: "Medium" },
+                        { name: "Classic Dragster", performance: true, size: "Medium" },
+                        { name: "Mach Bike", performance: true, size: "Medium" },
+                        { name: "Wild Wing", performance: true, size: "Medium" },
+                        { name: "Sugarscoot", performance: false, size: "Medium" },
+                        { name: "Super Blooper", performance: false, size: "Medium" },
+                        { name: "Zip Zip", performance: false, size: "Medium" },
+                        { name: "Daytripper", performance: false, size: "Medium" },
+                        { name: "Sneakster", performance: false, size: "Medium" },
+                        { name: "Sprinter", performance: false, size: "Medium" },
+                        { name: "Dolphin Dasher", performance: true, size: "Medium" }],
+                        [{ name: "Standard Kart L", performance: false, size: "Large" },
+                        { name: "Standard Bike L", performance: false, size: "Large" },
+                        { name: "Offroader", performance: false, size: "Large" },
+                        { name: "Flame Runner", performance: true, size: "Large" },
+                        { name: "Flame Flyer", performance: false, size: "Large" },
+                        { name: "Wario Bike", performance: false, size: "Large" },
+                        { name: "Piranha Prowler", performance: false, size: "Large" },
+                        { name: "Shooting Star", performance: false, size: "Large" },
+                        { name: "Jetsetter", performance: false, size: "Large" },
+                        { name: "Spear", performance: false, size: "Large" },
+                        { name: "Honey Coupe", performance: true, size: "Large" },
+                        { name: "Phantom", performance: false, size: "Large" }]
+                    ];
+
+
+
+                    if (this.selectedPerformance == "All") {
+                        var character = Math.floor(Math.random() * 9);
+                        var vehicle = Math.floor(Math.random() * 12);
+                        if (this.selectedSize == 'Small') {
+                            size = 0;
+                        } else if (this.selectedSize == 'Medium') {
+                            size = 1;
+                        } else if (this.selectedSize == 'Large') {
+                            size = 2;
+                        } else if (this.selectedSize == 'Any') {
+                            var size = Math.floor(Math.random() * 3);
+                        } else {
+
+                        }
+                        this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                    } else if (this.selectedPerformance == 'Good') {
+                        if(this.selectedSize == "Any"){
+                        var size = Math.floor(Math.random() * 3);
+                        }else{
+                            if (this.selectedSize == 'Small') {
+                            size = 0;
+                        } else if (this.selectedSize == 'Medium') {
+                            size = 1;
+                        } else if (this.selectedSize == 'Large') {
+                            size = 2;
+                        }
+                        }
+                        if (size == 0) {
+                            var temp = false
+
+                            do {
+                               
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == true) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (!temp)
+
+                        } else if (size == 1) {
+                            var temp = false
+
+                            do {
+                               
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == true) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (!temp)
+
+                        } else {
+                            var temp = false
+
+                            do {
+                                
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == true) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (!temp)
+
+                        }
+
+                    } else {
+                        if(this.selectedSize == "Any"){
+                        var size = Math.floor(Math.random() * 3);
+                        }else{
+                            if (this.selectedSize == 'Small') {
+                            size = 0;
+                        } else if (this.selectedSize == 'Medium') {
+                            size = 1;
+                        } else if (this.selectedSize == 'Large') {
+                            size = 2;
+                        }
+                        }
+                        if (size == 0) {
+                            var temp = true
+
+                            do {
+                               
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == false) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (temp)
+
+                        } else if (size == 1) {
+                            var temp = true
+
+                            do {
+                               
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == false) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (temp)
+
+                        } else {
+                            var temp = true
+
+                            do {
+                                
+                                var character = Math.floor(Math.random() * 9);
+                                var vehicle = Math.floor(Math.random() * 12);
+
+                                temp = VEHICLES[size][vehicle].performance
+                                if (temp == false) {
+                                    this.list.push(CHARACTERS[size][character].name + " in the " + VEHICLES[size][vehicle].name);
+                                }
+                            } while (temp)
+
+                        }
+
+
+                        
+                    }
+
+
+
+                },
+                clearList: function () {
                     this.list = [];
-              }
+                }
 
             },
-            
+
         });
     </script>
-    
-    </html>
+
+</html>
