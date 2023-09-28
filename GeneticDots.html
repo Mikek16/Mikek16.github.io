@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <title>p5.js Program</title>
+</head>
+
+<body>
+  <button onclick="runProgram()">Run Program</button>
+  <div id="canvasContainer"></div>
+
+  <script>
+    let bluePopulation;
+    let redPopulation;
+
+    function setup() {
+      createCanvas(800, 800);
+      bluePopulation = new Array(populationSize);
+      redPopulation = new Array(populationSize);
+
+      for (let i = 0; i < populationSize; i++) {
+        bluePopulation[i] = new Dot(400, 400);
+        redPopulation[i] = new Dot(random(width), random(height));
+      }
+    }
+
+    function draw() {
+      background(255);
+
+      for (let dot of bluePopulation) {
+        dot.displayBlue();
+      }
+      for (let dot of redPopulation) {
+        dot.displayRed();
+      }
+
+      evolve();
+    }
+
+    function evolve() {
+      calculateFitness();
+      selection();
+      reproduction();
+    }
+
+    function calculateFitness() {
+      calculateBlueFitness();
+      calculateRedFitness();
+    }
+
+    function calculateBlueFitness() {
+      for (let dot of bluePopulation) {
+        let sumDistance = 0;
+        for (let otherDot of redPopulation) {
+          if (dot !== otherDot) {
+            let distance = dist(dot.position.x, dot.position.y, mouseX, mouseY);
+            sumDistance += distance;
+          }
+        }
+        dot.fitness = 1 / pow(sumDistance, 6.045);
+      }
+    }
+
+    function calculateRedFitness() {
+      for (let dot of redPopulation) {
+        let sumDistance = 0;
+        for (let otherDot of bluePopulation) {
+          if (dot !== otherDot) {
+            let distance = dist(dot.position.x, dot.position.y, otherDot.position.x, otherDot.position.y);
+            sumDistance += distance;
+          }
+        }
+        dot.fitness = 1 / pow(sumDistance, 6.045);
+      }
+    }
+
+    function abs(a, b) {
+      if (a >= b) {
+        return a - b;
+      } else {
+        return b - a;
+      }
+    }
+
+    function selection() {
+      let newBluePopulation = new Array(populationSize);
+      let totalFitness = 0;
+      for (let dot of bluePopulation) {
+        totalFitness += dot.fitness;
+      }
+
+      for (let i = 0; i < populationSize; i++) {
+        let randomFitness = random(totalFitness);
+        let sumFitness = 0;
+        for (let dot of bluePopulation) {
+          sumFitness += dot.fitness;
+          if (sumFitness >= randomFitness) {
+            newBluePopulation[i] = dot;
+            break;
+          }
+        }
+      }
+
+      bluePopulation = newBluePopulation;
+
+      let newRedPopulation = new Array(populationSize);
+      let totalRedFitness = 0;
+      for (let dot of redPopulation) {
+        totalRedFitness += dot.fitness;
+      }
+
+      for (let i = 0; i < populationSize; i++) {
+        let randomRedFitness = random(totalRedFitness);
+        let sumRedFitness = 0;
+        for (let dot of redPopulation) {
+          sumRedFitness += dot.fitness;
+          if (sumRedFitness >= randomRedFitness) {
+            newRedPopulation[i] = dot;
+            break;
+          }
+        }
+      }
+
+      redPopulation = newRedPopulation;
+    }
+
+    function reproduction() {
+      // Blue
+      let newBluePopulation = new Array(populationSize);
+
+      for (let i = 0; i < populationSize; i++) {
+        let parentA = bluePopulation[floor(random(populationSize))];
+        let parentB = bluePopulation[floor(random(populationSize))];
+
+        let childPosition;
+
+        if (parentA !== null) {
+          childPosition = parentA.position.copy();
+
+          if (parentB !== null && random(1) < 0.5) {
+            // Crossover: swap positions with parentB
+            childPosition = parentB.position.copy();
+          }
+
+          if (random(1) < mutationRate) {
+            // Mutation: introduce small random changes to position
+            childPosition.x += random(-5, 5);
+            childPosition.y += random(-5, 5);
+          }
+        } else {
+          // If parentA is null, fallback to random position
+          childPosition = createVector(random(width), random(height));
+        }
+
+        newBluePopulation[i] = new Dot(childPosition.x, childPosition.y);
+      }
+
+      bluePopulation = newBluePopulation;
+
+      // Red
+      let newRedPopulation = new Array(populationSize);
+
+      for (let i = 0; i < populationSize; i++) {
+        let parentA = redPopulation[floor(random(populationSize))];
+        let parentB = redPopulation[floor(random(populationSize))];
+
+        let childPosition;
+
+        if (parentA !== null) {
+          childPosition = parentA.position.copy();
+
+          if (parentB !== null && random(1) < 0.5) {
+            // Crossover: swap positions with parentB
+            childPosition = parentB.position.copy();
+          }
+
+          if (random(1) < mutationRate2) {
+            // Mutation: introduce small random changes to position
+            childPosition.x += random(-5, 5);
+            childPosition.y += random(-5, 5);
+          }
+        } else {
+          // If parentA is null, fallback to random position
+          childPosition = createVector(random(width), random(height));
+        }
+
+        newRedPopulation[i] = new Dot(childPosition.x, childPosition.y);
+      }
+
+      redPopulation = newRedPopulation;
+    }
+
+    class Dot {
+      constructor(x, y) {
+        this.position = createVector(x, y);
+        this.fitness = 0;
+      }
+
+      displayBlue() {
+        fill(0, 0, 255);
+        ellipse(this.position.x, this.position.y, 4, 4);
+      }
+
+      displayRed() {
+        fill(255, 0, 0);
+        ellipse(this.position.x, this.position.y, 4, 4);
+      }
+    }
+    function runProgram() {
+        let canvas = p.createCanvas(800, 600);
+        canvas.parent('canvasContainer');
+
+        setup();
+        draw();
+      }
+
+    let sketch = function (p) {
+      let populationSize = 500;
+      let maxGenerations = 1000;
+      let mutationRate = 0.50;
+      let mutationRate2 = 0.30;
+
+
+    };
+
+    new p5(sketch);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation using JavaScript</title>
+    <style>
+        #animate{
+            background-color: gray;
+        }
+        body{
+            background-color: black;
+        }
+        .column {
+            width: 10px;
+            background-color: darkgreen;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .active-column{
+            width: 10px;
+            background-color: white;
+            display: inline-block;
+            margin-right: 5px;
+            transition: background-color 0.03s; /* Add a transition for smooth color change */
+        }   
+        
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <button onclick="startSorting('bubble')">Bubble Sort</button>
+    <button onclick="startSorting('merge')">Merge Sort</button>
+    
+    <script>
+        
+        let mySound = new Audio('pop.wav')
+        
+
+        // Function to generate a random integer between min and max (inclusive)
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Get the container element where the columns will be added
+        const container = document.getElementById("container");
+
+        // Array to store column heights
+        const columnHeights = [];
+
+        // Create 100 columns with random heights and store their heights in the array
+        for (let i = 0; i < 100; i++) {
+            const column = document.createElement("div");
+            column.className = "column";
+            const randomHeight = getRandomInt(0, 100);
+            column.style.height = randomHeight + "px";
+            container.appendChild(column);
+            columnHeights.push(randomHeight);
+        }
+
+        // Function to visually swap two columns
+        function swapColumns(a, b) {
+            const columns = document.querySelectorAll(".column");
+            const temp = columnHeights[a];
+            columnHeights[a] = columnHeights[b];
+            columnHeights[b] = temp;
+
+            columns[a].classList.remove(".column");
+            columns[b].classList.remove(".column");
+            columns[a].classList.add("active-column");
+            columns[b].classList.add("active-column");
+
+            const tempHeight = columns[a].style.height;
+            columns[a].style.height = columns[b].style.height;
+            columns[b].style.height = tempHeight;
+
+            setTimeout(() => {
+                columns[a].classList.remove("active-column");
+                columns[b].classList.remove("active-column");
+            }, 30); // Adjust the time to match the transition duration (0.5
+        }
+
+        // Bubble sort algorithm with animation
+        async function bubbleSort() {
+            const n = columnHeights.length;
+
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (columnHeights[j] > columnHeights[j + 1]) {
+                        swapColumns(j, j + 1);
+                        mySound.play()
+                        await new Promise(resolve => setTimeout(resolve, 25)); // Delay for visualization
+                    }
+                }
+            }
+        }
+
+        // Helper function to merge two sorted arrays
+        function merge(left, right) {
+            let result = [];
+            let leftIndex = 0;
+            let rightIndex = 0;
+
+            while (leftIndex < left.length && rightIndex < right.length) {
+                if (left[leftIndex] < right[rightIndex]) {
+                    result.push(left[leftIndex]);
+                    leftIndex++;
+                } else {
+                    result.push(right[rightIndex]);
+                    rightIndex++;
+                }
+            }
+
+            // Concatenate any remaining elements from both arrays
+            return result.concat(left.slice(leftIndex), right.slice(rightIndex));
+        }
+
+        // Merge sort algorithm with animation
+        async function mergeSort(array) {
+            if (array.length <= 1) {
+                return array;
+            }
+
+            const middle = Math.floor(array.length / 2);
+            const left = array.slice(0, middle);
+            const right = array.slice(middle);
+
+            // Recursively sort and merge the left and right halves
+            const leftSorted = await mergeSort(left);
+            const rightSorted = await mergeSort(right);
+
+            // Merge the sorted halves
+            const sortedArray = merge(leftSorted, rightSorted);
+
+            // Update the column heights to reflect the sorted order
+            const columns = document.querySelectorAll(".column");
+            for (let i = 0; i < sortedArray.length; i++) {
+                columns[i].classList.remove(".column")
+                columns[i].classList.add("active-column");
+                columns[i].style.height = sortedArray[i] + "px";
+                mySound.play();
+                await new Promise(resolve => setTimeout(resolve, 50)); // Delay for visualization
+                columns[i].classList.remove("active-column")
+                columns[i].classList.add(".column");
+            }
+
+    return sortedArray;
+}
+
+
+        // Function to start sorting
+        async function startSorting(sortAlgorithm) {
+            if (sortAlgorithm === 'bubble') {
+                await bubbleSort();
+            } else if (sortAlgorithm === 'merge') {
+                await mergeSort(columnHeights.slice());
+            }
+        }
+    </script>
+</body>
+</html>
