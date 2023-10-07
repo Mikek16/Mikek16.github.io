@@ -16,6 +16,7 @@
             font-family: 'Work Sans', sans-serif;
             color: #acdab6;
             background: #1b1b1f; 
+            overflow: hidden;
           }
 
           section{
@@ -26,8 +27,21 @@
             min-height: 200;
             padding: 300px 20vw;
           }
+            .cursor {
+                position: fixed;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                mix-blend-mode: difference;
+                background-color: transparent;
+                z-index: 1000;
+                border: 2px solid white;
+                height: 30px;
+                width: 30px;
+                transition: all 30ms ease-out;
+            }
           .green{
-            background: #30941e;
+            background: #7c939e;
           }
           .blue{
             background: #27496D;
@@ -43,6 +57,28 @@
             background-position: center;
             background-size: cover;
           }
+
+            body {
+            margin: 0;
+            background: #20262E;
+            min-height: 300px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .blog {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+
+            a {
+                color: white;
+            }
+            }
+
 
           .custom-shape-divider-top-1677889977 {
              position: absolute;
@@ -115,7 +151,7 @@
     </style>
 </head>
 <body>
-    
+    <div class='cursor' id="cursor"></div>
     <section class="green">
         
 
@@ -130,7 +166,7 @@
     <section class="light">
         <div class="custom-shape-divider-top-1677897940">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill" fill="#30941e"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill" fill="#7c939e"></path>
             </svg>
         </div>
         <h1 class="darkText" id="typed-text"></h1>
@@ -163,7 +199,7 @@
         <a href="mailto:MichaelGKrause@outlook.com">MichaelGKrause@outlook.com</a>
 
     </section>
-</body>
+
 <script>
   
   var i = 0;
@@ -186,6 +222,11 @@
 	function handleGit() {
         window.open('https://github.com/Mikek16', 'blank');
 	};
-	</script>
+    var cursor = document.getElementById("cursor");
+    document.body.addEventListener("mousemove", function(e) {
+    cursor.style.left = e.clientX + "px",
+        cursor.style.top = e.clientY + "px";
+    });
   </script>
+  </body>
 </html>
