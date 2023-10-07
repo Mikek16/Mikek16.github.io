@@ -27,6 +27,9 @@
             min-height: 200;
             padding: 300px 20vw;
           }
+          a:hover + .cursor {
+                background-color: #364638; /* Change to the color you want */
+           }   
             .cursor {
                 position: fixed;
                 border-radius: 50%;
@@ -35,9 +38,9 @@
                 mix-blend-mode: difference;
                 background-color: transparent;
                 z-index: 1000;
-                border: 2px solid white;
-                height: 30px;
-                width: 30px;
+                border: 0px solid white;
+                height: 50px;
+                width: 50px;
                 transition: all 3ms ease-out;
             }
           .top{
@@ -212,10 +215,30 @@
         window.open('https://github.com/Mikek16', 'blank');
 	};
     var cursor = document.getElementById("cursor");
-    document.body.addEventListener("mousemove", function(e) {
-    cursor.style.left = e.clientX + "px",
-        cursor.style.top = e.clientY + "px";
-    });
+
+        document.body.addEventListener("mousemove", function (e) {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        var links = document.querySelectorAll("a");
+
+        links.forEach(function (link) {
+            link.addEventListener("mouseenter", function () {
+                cursor.style.backgroundColor = "#364638"; /* Change to the color you want */
+                cursor.style.opacity = 1; // Fully opaque
+                cursor.style.width = "60px"; // Adjust the desired expanded size
+                cursor.style.height = "60px"; // Adjust the desired expanded size
+                cursor.style.transition = "opacity 0.2s, width 0.5s, height 0.5s"; // Adjust the duration as needed
+            });
+
+            link.addEventListener("mouseleave", function () {
+                cursor.style.opacity = 0; // Fully transparent
+                cursor.style.width = "0px"; // Adjust the original size
+                cursor.style.height = "0px"; // Adjust the original size
+            });
+        });
+
   </script>
   </body>
 </html>
