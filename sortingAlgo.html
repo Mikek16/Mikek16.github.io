@@ -136,7 +136,7 @@
                 columns[i].classList.remove(".column")
                 columns[i].classList.add("active-column");
                 columns[i].style.height = sortedArray[i] + "px";    
-                await new Promise(resolve => setTimeout(resolve, 50)); // Delay for visualization
+                await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
                 columns[i].classList.remove("active-column")
                 columns[i].classList.add(".column");
             }
